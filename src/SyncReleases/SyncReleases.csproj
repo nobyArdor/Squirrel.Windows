@@ -3,7 +3,7 @@
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net472</TargetFrameworks>
+    <TargetFrameworks>net45;net48</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <Description>SyncReleases</Description>
     <Title>SyncReleases</Title>
@@ -14,8 +14,11 @@
     <ProjectReference Include="..\Squirrel\Squirrel.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
     <PackageReference Include="Octokit" Version="0.40.0" />
+  </ItemGroup>
+  <ItemGroup  Condition="'$(TargetFramework)' != 'net45'">
+    <PackageReference Include="Octokit" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>

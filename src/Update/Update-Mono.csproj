@@ -3,7 +3,7 @@
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net472</TargetFrameworks>
+    <TargetFrameworks>net45;net48</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <Description>Update</Description>
     <Title>Update</Title>
