@@ -23,18 +23,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WpfAnimatedGif" Version="1.4.15.0" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ILRepack" Version="1.26.0" PrivateAssets="All" />
+    <PackageReference Include="ILRepack" Version="2.0.34" PrivateAssets="All" />
   </ItemGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PostBuildEvent>
+	  <PostBuildEvent>
       cd "$(TargetDir)"
-      "$(NuGetPackageRoot)ilrepack\1.26.0\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) Microsoft.Web.XmlTransform.dll Squirrel.dll NuGet.Squirrel.dll Mono.Cecil.dll SharpCompress.dll
+      "$(PkgILRepack)\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) Microsoft.Web.XmlTransform.dll Squirrel.dll NuGet.Squirrel.dll Mono.Cecil.dll SharpCompress.dll
       del "$(TargetFileName)"
       ren "$(TargetFileName).tmp" "$(TargetFileName)"
     </PostBuildEvent>
