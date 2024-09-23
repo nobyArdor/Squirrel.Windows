@@ -12,7 +12,7 @@ namespace Squirrel.Tests
         [Fact(Skip = "Rewrite this to be an integration test")]
         public void NewReleasesShouldBeDetected()
         {
-            Assert.False(true, "Rewrite this to be an integration test");
+            Assert.Fail("Rewrite this to be an integration test");
             /*
             string localReleasesFile = Path.Combine(".", "theApp", "packages", "RELEASES");
 
@@ -44,7 +44,7 @@ namespace Squirrel.Tests
         [Fact(Skip = "Rewrite this to be an integration test")]
         public void CorruptedReleaseFileMeansWeStartFromScratch()
         {
-            Assert.False(true, "Rewrite this to be an integration test");
+            Assert.Fail("Rewrite this to be an integration test");
 
             /*
             string localPackagesDir = Path.Combine(".", "theApp", "packages");
@@ -82,7 +82,7 @@ namespace Squirrel.Tests
         [Fact(Skip = "Rewrite this to be an integration test")]
         public void CorruptRemoteFileShouldThrowOnCheck()
         {
-            Assert.False(true, "Rewrite this to be an integration test");
+            Assert.Fail("Rewrite this to be an integration test");
 
             /*
             string localPackagesDir = Path.Combine(".", "theApp", "packages");

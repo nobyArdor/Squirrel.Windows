@@ -54,12 +54,12 @@ namespace Squirrel.Tests.TestHelpers
 
         public static void ShouldBeSameAs<T>(this T actual, T expected)
         {
-            Assert.Same(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         public static void ShouldNotBeSameAs<T>(this T actual, T expected)
         {
-            Assert.NotSame(expected, actual);
+            Assert.NotEqual(expected, actual);
         }
 
         public static void ShouldBeAssignableFrom<T>(this object instance) where T : class
@@ -89,7 +89,7 @@ namespace Squirrel.Tests.TestHelpers
 
         public static void ShouldStartWith(this string current, string expectedSubstring, StringComparison comparison)
         {
-            Assert.True(current.StartsWith(expectedSubstring, comparison));
+            Assert.StartsWith(current, expectedSubstring, comparison);
         }
 
         public static void ShouldNotBeNull(this object currentObject)

@@ -49,7 +49,7 @@ namespace Squirrel.Tests
                     .OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall");
 
                 using (key) {
-                    Assert.False(key.GetSubKeyNames().Contains("theApp"));
+                    Assert.DoesNotContain("theApp", key.GetSubKeyNames());
                 }
             }
         }
@@ -304,7 +304,7 @@ namespace Squirrel.Tests
                     File.WriteAllText(Path.Combine(tempDir, "RELEASES"), "");
 
                     using (fixture) {
-                        await Assert.ThrowsAsync(typeof(Exception), () => fixture.CheckForUpdate());
+                        await Assert.ThrowsAsync<Exception>(() => fixture.CheckForUpdate());
                     }
                 }
             }
@@ -314,7 +314,7 @@ namespace Squirrel.Tests
             {
                 // This should result in a WebException (which gets caught) unless you can actually access http://lol
                 using (var fixture = new UpdateManager("http://lol", "theApp")) {
-                    await Assert.ThrowsAsync(typeof(WebException), () => fixture.CheckForUpdate());
+                    await Assert.ThrowsAsync<WebException>(() => fixture.CheckForUpdate());
                 }
             }
 

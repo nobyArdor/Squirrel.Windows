@@ -73,7 +73,7 @@ namespace Squirrel.Tests.Core
         [Fact(Skip = "Rewrite this test, the original uses too many heavyweight fixtures")]
         public void ApplyMultipleDeltaPackagesGeneratesCorrectHash()
         {
-            Assert.True(false, "Rewrite this test, the original uses too many heavyweight fixtures");
+            Assert.Fail("Rewrite this test, the original uses too many heavyweight fixtures");
         }
     }
 

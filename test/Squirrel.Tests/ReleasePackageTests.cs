@@ -270,7 +270,7 @@ namespace Squirrel.Tests.Core
                 Assert.Contains("some-words.txt", contentFilePaths);
                 Assert.Contains("dir\\item-in-subdirectory.txt", contentFilePaths);
 
-                Assert.Equal(1, pkg.GetLibFiles().Count());
+                Assert.Single(pkg.GetLibFiles());
             } finally {
                 File.Delete(outputPackage);
             }

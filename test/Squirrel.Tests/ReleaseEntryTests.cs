@@ -254,13 +254,13 @@ namespace Squirrel.Tests.Core
 
             Assert.Equal(firstVersion, releases[0].Version);
             Assert.Equal(secondVersion, releases[1].Version);
-            Assert.Equal(true, releases[1].IsDelta);
+            Assert.True(releases[1].IsDelta);
             Assert.Equal(secondVersion, releases[2].Version);
-            Assert.Equal(false, releases[2].IsDelta);
+            Assert.False(releases[2].IsDelta);
             Assert.Equal(thirdVersion, releases[3].Version);
-            Assert.Equal(true, releases[3].IsDelta);
+            Assert.True(releases[3].IsDelta);
             Assert.Equal(thirdVersion, releases[4].Version);
-            Assert.Equal(false, releases[4].IsDelta);
+            Assert.False(releases[4].IsDelta);
         }
 
         [Fact]
