@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' and '$(TargetFramework)' == 'net45' ">
 	  <PostBuildEvent>
       cd "$(TargetDir)"
       "$(PkgILRepack)\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) Microsoft.Web.XmlTransform.dll Squirrel.dll NuGet.Squirrel.dll Mono.Cecil.dll SharpCompress.dll
@@ -44,5 +44,15 @@
       ren "$(TargetFileName).tmp" "$(TargetFileName)"
     </PostBuildEvent>
   </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' and '$(TargetFramework)' != 'net45' ">
+	  <PostBuildEvent>
+		  cd "$(TargetDir)"
+		  "$(PkgILRepack)\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) Microsoft.Web.XmlTransform.dll Squirrel.dll NuGet.Squirrel.dll Mono.Cecil.dll SharpCompress.dll Microsoft.Bcl.AsyncInterfaces.dll System.Threading.Tasks.Extensions.dll System.Runtime.CompilerServices.Unsafe.dll System.Memory.dll System.Buffers.dll System.Numerics.Vectors.dll System.Text.Encoding.CodePages.dll ZstdSharp.dll
+		  del "$(TargetFileName)"
+		  ren "$(TargetFileName).tmp" "$(TargetFileName)"
+	  </PostBuildEvent>
+  </PropertyGroup>
+
 
 </Project>

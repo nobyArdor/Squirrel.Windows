@@ -35,13 +35,23 @@
   </ItemGroup>
 
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' and '$(TargetFramework)' == 'net45' ">
     <PostBuildEvent>
       cd "$(TargetDir)"
       "$(PkgILRepack)\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) WpfAnimatedGif.dll SharpCompress.dll Microsoft.Web.XmlTransform.dll Squirrel.dll NuGet.Squirrel.dll Mono.Cecil.dll
       del "$(TargetFileName)"
       ren "$(TargetFileName).tmp" "$(TargetFileName)"
     </PostBuildEvent>
+  </PropertyGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' and '$(TargetFramework)' != 'net45' ">
+	  <PostBuildEvent>
+		  cd "$(TargetDir)"
+		  "$(PkgILRepack)\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) WpfAnimatedGif.dll SharpCompress.dll Microsoft.Bcl.AsyncInterfaces.dll System.Threading.Tasks.Extensions.dll System.Runtime.CompilerServices.Unsafe.dll System.Memory.dll System.Buffers.dll System.Numerics.Vectors.dll System.Text.Encoding.CodePages.dll ZstdSharp.dll Microsoft.Web.XmlTransform.dll Squirrel.dll NuGet.Squirrel.dll Mono.Cecil.dll
+		  del "$(TargetFileName)"
+		  ren "$(TargetFileName).tmp" "$(TargetFileName)"
+	  </PostBuildEvent>
   </PropertyGroup>
 
 </Project>
